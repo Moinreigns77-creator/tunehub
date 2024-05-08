@@ -13,5 +13,8 @@ public interface UsersService {
 	public String getRole(String email);
 
 	public Users getUserByEmail(String email);
+	
 	public void updateUser(Users user);
+
+	public boolean updatePassword(String email, String password);
 }

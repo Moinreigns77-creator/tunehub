@@ -2,37 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style type="text/css">
+<title>Displaying Songs</title>
+<link rel="stylesheet" th:href="@{/css/displaySongs.css}">
+
+<style>
 iframe {
-	height:100px;
-	width:400px; 
+	height: 100px;
+	width: 500px;
 }
 </style>
 </head>
 <body>
-	<table border>
-		<thead>
-			<tr>
-			<th>Name</th>
-			<th>Artist</th>
-			<th>Genre</th>
-			<th>Play Song</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<tr th:each="s:${songs}">
-			 <td th:text="${s.name}">     </td>
-			 <td th:text="${s.artist}">   </td>
-			 <td th:text="${s.genre}">    </td>
-			 <td>
-			   <audio controls>
-			     <source   th:src="${s.link}" type="audio/mp3" />
-			   </audio>
-			 </td>
-			</tr>	
-		</tbody>
-	</table>
+	<header>
+        <div class="logo">
+            <img src="img/logo.jpg" alt="TuneHub Logo">
+            <a href="tunehub" style="color: white;text-decoration: none;"><h1>TuneHub</h1></a>
+        </div>
+		<div class="buttons">
+            <a href="logout" class="rounded-button">Logout</a>
+        </div>
+    </header>
+	<div class="content">
+	<h2>Hello Admin !</h2>
+	<h3>Songs List</h3>
+		<section class="song-gallery">
+		<div th:each="song:${songs}" class="song">
+			<img th:src="${'/img/'+song.image}" alt="Song Image">
+			<p th:text ="${song.name}"></p>
+			<p th:text = "${song.artist}"></p>
+			<p th:text = "${song.genre}"></p>
+			<audio th:src="${song.link}" controls download="${song.link}"></audio>
+		</div>
+        
+        <!-- Add more songs as needed -->
+    </section>
+    <h2>Trending Songs</h2>
+    <section class="song-gallery">
+		<div th:each="song:${trendingSongs}" class="song">
+			<img th:src="${'/img/'+song.image}" alt="Song Image">
+			<p th:text ="${song.title}"></p>
+			<p th:text = "${song.artist}"></p>
+			<p th:text = "${song.type}"></p>
+			<audio th:src="${song.link}" controls 
+			download="${song.link}"></audio>
+		</div>
+        
+        <!-- Add more songs as needed -->
+    </section>
+	</div>
 </body>
 </html>

@@ -39,7 +39,7 @@ public class PlaylistController {
 		// updating song table
 		List<Song> songList = playlist.getSongs();
 		for (Song s : songList) {
-			List<PlayList> list = s.getPlayList();
+			List<PlayList> list = s.getPlaylists();
 			list.add(playlist);
 			// update song obj in the db
 			songService.updateSong(s);

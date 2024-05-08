@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Tune Hub : HOME</title>
+<link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-	<a href="login">login</a>
-	<a href="registration">register</a>
+	 <header>
+        <div class="logo">
+            <img src="img/logo.jpg" alt="TuneHub Logo">
+            <a href="tunehub" style="color: white;text-decoration: none;"><h1>TuneHub</h1></a>
+        </div>
+        <div class="buttons">
+            <a href="login" class="rounded-button sign-in">Sign In</a>
+            <a href="registration" class="rounded-button sign-up">Sign Up</a>
+        </div>
+    </header>
+
+    <section class="page-info">
+        <h2>Welcome to TuneHub!</h2>
+        <p>Relieve your stress and explore a world of musical bliss with TuneHub.</p>
+        <p>Discover curated playlists and trending songs that perfectly match your interests.</p>
+        <p>Immerse yourself in a diverse collection of music and enhance your musical journey.</p>
+        <p>Subscribe now to access a wide variety of entertainment!</p><br>
+        <a href="registration" class="rounded-button subscribe-now">Subscribe Now</a>
+    </section><br>
+    <h2>Trending Songs</h2>
+ 
+    <section class="song-gallery">
+		<div th:each="song:${songs}" class="song">
+			<img th:src="${'/img/'+song.image}" alt="Song Image">
+			<p th:text ="${song.title}"></p>
+			<p th:text = "${song.artist}"></p>
+			<audio th:src="${song.link}" controls></audio>
+		</div>
+        
+        <!-- Add more songs as needed -->
+    </section>
+
 	
 </body>
 </html>

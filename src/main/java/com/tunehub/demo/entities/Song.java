@@ -13,25 +13,26 @@ public class Song {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
+	String image;
 	String name;
 	String artist;
 	String genre;
 	String link;
 	@ManyToMany
-	List<PlayList> playList;
+	List<PlayList> playlists;
 
 	public Song() {
 		super();
 	}
 
-	public Song(int id, String name, String artist, String genre, String link, List<PlayList> playList) {
+	public Song(int id, String name, String artist, String genre, String link, List<PlayList> playlists) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.link = link;
-		this.playList = playList;
+		this.playlists = playlists;
 	}
 
 	public int getId() {
@@ -74,17 +75,26 @@ public class Song {
 		this.link = link;
 	}
 
-	public List<PlayList> getPlayList() {
-		return playList;
+	public List<PlayList> getPlaylists() {
+		return playlists;
 	}
 
-	public void setPlayList(List<PlayList> playList) {
-		this.playList = playList;
+	public void setPlaylists(List<PlayList> playlists) {
+		this.playlists = playlists;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override
 	public String toString() {
-		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", genre=" + genre + "]";
+		return "Song [id=" + id + ", image=" + image + ", name=" + name + ", artist=" + artist + ", genre=" + genre
+				+ ", link=" + link + ", playlists=" + playlists + "]";
 	}
 
 }

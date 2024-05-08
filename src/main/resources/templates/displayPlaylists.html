@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>All Playlists</title>
+<title>Displaying Playlists</title>
+<link rel="stylesheet" th:href="@{/css/displayPlaylist.css}">
 </head>
 <body>
+	<header>
+        <div class="logo">
+            <img src="img/logo.jpg" alt="TuneHub Logo">
+            <a href="tunehub" style="color: white;text-decoration: none;"><h1>TuneHub</h1></a>
+        </div>
+        <div class="buttons">
+            <a href="logout" class="rounded-button">Logout</a>
+        </div>
+    </header>
+
+
+
+	<div class="content">
+	<h1>Playlists :</h1>
 	<table border>
-		<tr>
-			<th>Name</th>
-			<th>Songs</th>
-		</tr>
-
-		<tr th:each="playlist: ${allPlaylist}">
-			<td th:text=${playlist.name}></td>
-			<td>
-				<ul>
-					<li th:each="song :${playlist.songs}">
-					<span th:text="${song.name}"></span> 
-					 <audio controls th:src="${song.link}" type="audio/mp3"></audio>
-					</li>
-				</ul>
-			</td>
-		</tr>
-
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Songs</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="playlist:${playlists}">
+				<td th:text="${playlist.name}"></td>
+				<td><ul>
+						<li th:each="song:${playlist.songs}"><span th:text="${song.name}"></span> <audio
+								controls>
+								<source th:src="${song.link}" type="audio/mpeg">
+							</audio></li>
+					</ul></td>
+			</tr>
+		</tbody>
 	</table>
+	</div>
 
 </body>
 </html>
